@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+body {
+    background-color: #1c1c1c;
+    overflow: hidden;
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.header p {
+    color: white;
+    font-weight: 800;
+    font-family: 'Montserrat';
+    text-align: center;
+    padding-top: 30px;
+    font-size: 15ch;
+    letter-spacing: 7px;
+}
+
+.header p span {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 300% 300%;
+    animation: gradient 5s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tagline p {
+    color: white;
+    font-family: 'Montserrat';
+    text-align: center;
+    font-size: 3ch;
+    padding-top: 40px;
+    overflow: hidden;
+}
+
+.btn {
+    font-family: 'Montserrat';
+    display: block;
+    margin: 0 auto;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.btn svg {
+    fill: white;
+    height: 15px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+}
+
+.hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.visible {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#agree-tac p{
+    color: white;
+    font-family: 'Montserrat';
+    padding-top: 120px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.checkbox {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+#v1 {
+    color: white;
+    font-weight: 800;
+    font-family: 'Montserrat';
+    text-align: center;
+    padding-top: 10px;
+    font-size: 15ch;
+    letter-spacing: 7px;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
+    height: 27vh;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.beginning {
+	color: white;
+	font-family: 'Montserrat';
+    font-weight: 700;
+	font-size: 3ch;
+	text-align: center;
+}
+
+.creators-note{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: white;
+    font-family: 'Montserrat';
+    font-size: 2.5ch;    
+}
+
+body::-webkit-scrollbar {
+	width: 6px;
+	background-color: #1c1c1c;
+}
+
+body::-webkit-scrollbar-thumb {
+	background-color: #707070;
+	border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+	background-color: #a0a0a0;
+}
+
+#set-head {
+    color: white;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 3ch;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#set-data label{
+    color: white;
+    font-family: 'Montserrat';
+    padding-bottom: 5px;
+}
+
+#set-data{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#set-data input{
+    color: white;
+    font-family: 'Montserrat';
+    background-color: #1c1c1c;
+    border: solid 2px white;
+    border-radius: 5px;
+    height: 50px;
+    width: 500px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#set-data input::placeholder {
+	color: #CCCCCC;
+	font-family: Montserrat, sans-serif;
+	font-size: 16px;
+}
+
+#set-data input:focus {
+	outline: none;
+}
+
+.input-el .note {
+    color: rgb(200, 200, 200);
+    font-family: 'Montserrat';
+    padding-top: 10px;
+    width: 500px;
+}
+
+#save button{
+    font-family: 'Montserrat';
+    font-size: 2ch;
+}
+

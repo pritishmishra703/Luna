@@ -1,0 +1,6 @@
+credentials/*
+node_modules/*
+__pycache__/*
+env/*
+intents.py
+output.txt

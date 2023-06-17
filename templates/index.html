@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="{{ url_for('static', filename='js/web-voice-processor/index.js') }}?{{ timestamp }}v"></script>
+    <script src="{{ url_for('static', filename='js/porcupine-web/index.js') }}?{{ timestamp }}"></script>
+    <script src="{{ url_for('static', filename='js/hey_luna.js') }}?{{ timestamp }}"></script>
+    <script src="{{ url_for('static', filename='js/porcupine_params.js') }}?{{ timestamp }}"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?{{ timestamp }}">
+    <script src="{{ url_for('static', filename='js/index.js') }}?{{ timestamp }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="https://kit.fontawesome.com/8bffea30bb.js" crossorigin="anonymous"></script>
+    <title>Luna</title>
+
+    <script>
+        // Check if the "visited" cookie exists
+        if (document.cookie.indexOf("visited=true") === -1) {
+            // If the cookie doesn't exist, show the welcome page
+            showWelcomePage();
+            var expiryDate = new Date();
+            expiryDate.setDate(expiryDate.getDate() + 1000);
+            document.cookie = "visited=true; expires=" + expiryDate.toUTCString();
+        }
+
+        function showWelcomePage() {
+            document.location.href = '/welcome'
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="chat">
+        <!-- messages goes here -->
+    </div>
+
+    <div class="settings" id="settingsButton">
+        <svg xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512">
+            <path
+                d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z" />
+        </svg>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Say 'Hey Luna' or type...">
+    </div>
+
+    <div class="circle-container">
+        <div class="pulse-circle"></div>
+        <div class="circle" onclick="post_wwd()">
+            <div class="image-wrapper">
+                <span class="material-symbols-outlined">mic</span>
+                <div class="rec-circle"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="settingsPopup" class="popup">
+        <div class="popup-content">
+
+            <!-- SETTING STARTS -->
+
+            <div class="">
+                <div class="head">
+                    <div class="row">
+                        <div>
+                            <p>Settings</p>
+                        </div>
+                        <div id="line"></div>
+                    </div>
+
+                </div>
+
+                <div class="container" id="settingsWrapper">
+                    <div class="row restSetting">
+                        <div class="col-md-10">
+                            <p>Turn Off Text-To-Speech
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-toggle="tooltip"
+                                    data-html="true"
+                                    title="Don't like the robotic voice? Don't worry turn it off here or use more high quality voice from 'Additional Features' section.">
+                                    <path
+                                        d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+                                </svg>
+                            </p>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label class="switch">
+                                <input type="checkbox" id="toggleSwitch">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SETTING OVER -->
+
+            <!-- SETTING STARTS -->
+
+            <div class="settingSection">
+                <div class="head">
+                    <div class="row">
+                        <div>
+                            <p>Additional Features</p>
+                        </div>
+                        <div id="line"></div>
+                    </div>
+
+                </div>
+
+                <div class="container" id="settingsWrapper">
+                    <div class="row restSetting">
+                        <div class="col-md-10">
+                            <p>High Quality Voice 🔊
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-toggle="tooltip"
+                                    data-html="true" title="Enable High-Quality Voice (Additional Charges Apply)">
+                                    <path
+                                        d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+                                </svg>
+                            </p>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label class="switch">
+                                <input type="checkbox" id="toggleSwitch">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row restSetting">
+                        <div class="col-md-10">
+                            <p>Google & Wikipedia Search 🔍
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-toggle="tooltip"
+                                    data-html="true"
+                                    title="The Google & Wikipedia search feature uses text-davinci-003, which is costlier than gpt-3.5-turbo. Use this setting only if you specifically require the added capabilities and are willing to bear the extra expense.">
+                                    <path
+                                        d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
+                                </svg>
+                            </p>
+                        </div>
+
+                        <div class="col-md-2">
+                            <label class="switch">
+                                <input type="checkbox" id="toggleSwitch">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- SETTING OVER -->
+
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+        var chat = {{ chat| tojson}};
+        for (var i = 0; i < chat.length; i++) {
+            addMessageToChat(chat[i]['content'], chat[i]['role'], false);
+        }
+
+        const searchInput = document.getElementById("search-input");
+        searchInput.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" && searchInput.value.trim() !== "") {
+                const userInput = searchInput.value.trim();
+                getResponse(userInput);
+                searchInput.value = ""; // Clear the input after sending the value
+            }
+        });
+
+        const settingsButton = document.getElementById("settingsButton");
+        const settingsPopup = document.getElementById("settingsPopup");
+
+        settingsButton.addEventListener("click", function () {
+            settingsPopup.style.display = "flex";
+        });
+
+        settingsPopup.addEventListener("click", function (e) {
+            if (e.target === settingsPopup) {
+                settingsPopup.style.display = "none";
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
