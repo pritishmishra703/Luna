@@ -1,8 +1,8 @@
 # Luna: A Computer Assistant 
 
-Luna is a smart computer assistant built using ChatGPT.
+Luna is a smart computer assistant built using ChatGPT. It can open websites, desktop applications and many more.
 
-Watch the YouTube video now: https://www.youtube.com/watch?v=R9CNzKNcg1c
+Watch the YouTube video for more information: https://www.youtube.com/watch?v=R9CNzKNcg1c
 
 # Installation
 ```
